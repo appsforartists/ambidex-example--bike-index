@@ -1,0 +1,26 @@
+{
+  "name": "isomorphic-react-test",
+  "version": "0.0.0",
+  "description": "A sample project to play with running ReactRouter on the server",
+  "main": "application/server.js",
+  "dependencies": {
+    "express": "3.x",
+    "jsx-loader": "^0.11.0",
+    "morgan": "^1.2.2",
+    "node-jsx": "^0.11.0",
+    "react": "^0.11.1",
+    "react-router": "git+https://github.com/karlmikko/react-router",
+    "webpack-dev-middleware": "^1.0.10"
+  },
+  "scripts": {
+    "start": "node --harmony ./application/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:appsforartists/isomorphic-react-test.git"
+  },
+  "contributors": [
+    "Brenton Simpson <bresimpson@ebay.com> (http://appsforartists.com)"
+  ]
+}
