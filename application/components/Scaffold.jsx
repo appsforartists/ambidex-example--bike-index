@@ -14,7 +14,7 @@ module.exports = React.createClass(
                                         </title>
 
                                         <script
-                                          src = "/bundles/jsx.js"
+                                          src = { this.props.scriptSrc }
                                           defer
                                         ></script>
                                       </head>

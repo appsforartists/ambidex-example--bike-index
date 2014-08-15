@@ -22,5 +22,10 @@
   },
   "contributors": [
     "Brenton Simpson <bresimpson@ebay.com> (http://appsforartists.com)"
-  ]
+  ],
+  "devDependencies": {
+    "loader-utils": "^0.2.3",
+    "react-hot-loader": "^0.3.0",
+    "webpack-dev-server": "^1.4.10"
+  }
 }

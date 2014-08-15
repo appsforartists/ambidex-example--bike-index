@@ -8,13 +8,16 @@ require("node-jsx").install(
 var Express              = require("express");
 var Morgan               = require("morgan");
 var Webpack              = require("webpack");
-var WebpackDevMiddleware = require("webpack-dev-middleware");
+var WebpackDevServer     = require("webpack-dev-server");
 
 var React                = require("react");
 var ReactRouter          = require("react-router");
 
 const NAME = "Isomorphic React Test";
+
+var host = "localhost";
 var port = process.env.WEB_PORT || 8080;
+var webpackPort = port + 1;
 
 var server = new Express();
 
@@ -22,18 +25,16 @@ server.use(
   new Morgan("combined")
 );
 
-var webpackConfig = require("../webpack.config.js");
+server.all(
+  "*",
 
-server.use(
-  new WebpackDevMiddleware(
-    new Webpack(
-      webpackConfig
-    ),
-    {
-      "lazy":       true,
-      "publicPath": webpackConfig.output.publicPath
-    }
-  )
+  function (request, response, next) {
+    response.header(
+      "Access-Control-Allow-Origin",
+      "//" + host + ":" + webpackPort
+    );
+    next();
+  }
 );
 
 server.get(
@@ -51,9 +52,10 @@ server.get(
             React.renderComponentToStaticMarkup(
               require("./components/Scaffold.jsx")(
                 {
-                  "body":   {
-                              "__html":   result.html
-                            }
+                  "scriptSrc":  "//" + host + ":" + webpackPort + "/bundles/jsx.js",
+                  "body":       {
+                                  "__html":   result.html
+                                }
                 }
               )
             )
@@ -64,9 +66,43 @@ server.get(
   }
 );
 
+var webpackConfig = require("../webpack.config.js");
+
+var webpackDevServer = new WebpackDevServer(
+  new Webpack(
+    webpackConfig
+  ),
+  {
+    "hot":       true,
+    "publicPath": webpackConfig.output.publicPath
+  }
+);
+
 try {
   server.listen(port);
-  console.info("Now serving:\n - " + NAME + " on port " + port + "…\n");
+
+  var logAppStart = function (name, port) {
+    console.info(" - " + name + " on port " + port + "…");
+  };
+
+  console.info("Now serving:");
+  logAppStart(NAME, port);
+
+  webpackDevServer.listen(
+    webpackPort,
+    host,
+    function (error, result) {
+      if (error) {
+        console.error(error);
+        process.exit();
+
+      } else {
+        logAppStart("Webpack Dev Server", webpackPort);
+      }
+    }
+  );
+
+  console.log(""); // newline
 
 } catch (error) {
   console.error("Couldn't start " + NAME + " on port " + port);

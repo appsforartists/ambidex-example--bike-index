@@ -1,17 +1,31 @@
+var Webpack = require("webpack");
+
 var path = require("path");
 
 module.exports = {
   "context":  __dirname,
 
   "entry":    {
-                "jsx":  "./application/client.js"
+                "jsx":  [
+                          "webpack-dev-server/client?http://localhost:8081",
+                          "webpack/hot/dev-server",
+                          "./application/client.js"
+                        ]
+              },
+
+  "resolve":  {
+                "extensions": [
+                  "",
+                  ".js",
+                  ".jsx"
+                ]
               },
 
   "module":   {
                 "loaders":  [
                               {
-                                "test":   /\.jsx/,
-                                "loader": "jsx-loader?harmony"
+                                "test":   /\.jsx$/,
+                                "loader": "react-hot-loader!jsx-loader?harmony"
                               }
                             ]
               },
@@ -23,4 +37,7 @@ module.exports = {
                 "publicPath":     "/bundles/"
               },
 
+  "plugins":  [
+                new Webpack.HotModuleReplacementPlugin()
+              ],
 };
