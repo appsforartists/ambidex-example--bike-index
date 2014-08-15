@@ -48,7 +48,15 @@ server.get(
         response.end(
           [
             "<!DOCTYPE html>",
-            result.html
+            React.renderComponentToStaticMarkup(
+              require("./components/Scaffold.jsx")(
+                {
+                  "body":   {
+                              "__html":   result.html
+                            }
+                }
+              )
+            )
           ].join("\n")
         );
       }

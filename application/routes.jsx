@@ -9,10 +9,12 @@ var Routes = ReactRouter.Routes;
 var Route  = ReactRouter.Route;
 
 module.exports = (
-  <Routes>
+  <Routes
+    location = "history"
+  >
     <Route
       path    = "/"
-      handler = { require('./components/Scaffold.jsx') }
+      handler = { require('./components/Main.jsx') }
     >
       <Route
         path    = "/"

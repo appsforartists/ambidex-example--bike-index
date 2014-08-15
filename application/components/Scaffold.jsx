@@ -12,13 +12,16 @@
                                         <title>
                                           TODO: make titles work
                                         </title>
+
+                                        <script
+                                          src = "/bundles/jsx.js"
+                                          defer
+                                        ></script>
                                       </head>
 
-                                      <body>
-                                        <this.props.activeRouteHandler />
-                                      </body>
-
-                                      <script src = "/bundles/jsx.js"></script>
+                                      <body
+                                        dangerouslySetInnerHTML = { this.props.body }
+                                      />
                                     </html>;
                           }
   }

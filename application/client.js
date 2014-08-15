@@ -1,6 +1,26 @@
 var React = require("react");
 
-React.renderComponent(
-  require("./routes.jsx"),
-  document.body.parentElement
-);
+var containerSelector = "body";
+
+var mountReact = function() {
+  var container = document.querySelector(containerSelector);
+
+  if (!container) {
+    return false;
+
+  } else {
+    React.renderComponent(
+      require("./routes.jsx"),
+      container
+    );
+
+    return true;
+  }
+};
+
+if (!mountReact()) {
+  window.addEventListener(
+    "DOMContentLoaded",
+    mountReact
+  );
+}
