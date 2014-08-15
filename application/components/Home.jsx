@@ -2,10 +2,10 @@
  * @jsx React.DOM
  */
 
- var React       = require("react");
- var ReactRouter = require("react-router");
+var React       = require("react");
+var ReactRouter = require("react-router");
 
- module.exports = React.createClass(
+module.exports = React.createClass(
   {
     "render":             function () {
                             return  <div>
