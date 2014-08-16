@@ -6,18 +6,23 @@ module.exports = {
   "context":  __dirname,
 
   "entry":    {
-                "jsx":  [
-                          "webpack-dev-server/client?http://localhost:8081",
-                          "webpack/hot/dev-server",
-                          "./application/client.js"
-                        ]
+                "jsx":    [
+                            // TODO: conditionally enable these in dev mode
+                            "webpack-dev-server/client?http://localhost:8081",
+                            "webpack/hot/dev-server",
+
+                            "./application/styles/Main.scss",
+                            "./application/client.js"
+                          ],
+
               },
 
   "resolve":  {
                 "extensions": [
                   "",
                   ".js",
-                  ".jsx"
+                  ".jsx",
+                  ".scss"
                 ]
               },
 
@@ -26,6 +31,10 @@ module.exports = {
                               {
                                 "test":   /\.jsx$/,
                                 "loader": "react-hot-loader!jsx-loader?harmony"
+                              },
+                              {
+                                "test":   /\.scss$/,
+                                "loader": "style-loader!css-loader!sass-loader"
                               }
                             ]
               },

@@ -7,7 +7,9 @@ var React = require("react");
 module.exports = React.createClass(
   {
     "render":             function () {
-                            return  <div>
+                            return  <div
+                                      className = "AppBar"
+                                    >
                                       hello from AppBar!
                                     </div>;
                           }
