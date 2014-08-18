@@ -19,6 +19,9 @@ var host = "localhost";
 var port = process.env.WEB_PORT || 8080;
 var webpackPort = port + 1;
 
+var webpackConfig = require("../webpack.config.js");
+webpackConfig.output.publicPath = "http://" + host + ":" + webpackPort + webpackConfig.output.publicPath;
+
 var server = new Express();
 
 server.use(
@@ -52,7 +55,7 @@ server.get(
             React.renderComponentToStaticMarkup(
               require("./components/Scaffold.jsx")(
                 {
-                  "scriptSrc":  "//" + host + ":" + webpackPort + "/bundles/jsx.js",
+                  "scriptSrc":  webpackConfig.output.publicPath + "jsx.js",
                   "body":       {
                                   "__html":   result.html
                                 }
@@ -65,8 +68,6 @@ server.get(
     );
   }
 );
-
-var webpackConfig = require("../webpack.config.js");
 
 var webpackDevServer = new WebpackDevServer(
   new Webpack(
