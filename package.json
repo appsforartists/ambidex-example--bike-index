@@ -6,13 +6,15 @@
   "dependencies": {
     "autoprefixer-loader": "^0.1.1",
     "css-loader": "^0.7.1",
-    "express": "3.x",
+    "express": "^4.8.4",
     "jsx-loader": "^0.11.0",
+    "lazy.js": "^0.3.2",
     "morgan": "^1.2.2",
     "node-jsx": "^0.11.0",
     "react": "^0.11.1",
     "react-router": "git+https://github.com/karlmikko/react-router",
     "sass-loader": "^0.2.0",
+    "serve-static": "^1.5.3",
     "style-loader": "^0.7.0",
     "webpack": "^1.1.11"
   },
@@ -29,6 +31,7 @@
   ],
   "devDependencies": {
     "loader-utils": "^0.2.3",
+    "my-local-ip": "^1.0.0",
     "react-hot-loader": "^0.3.0",
     "webpack-dev-server": "^1.4.10"
   }

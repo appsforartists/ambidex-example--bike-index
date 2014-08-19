@@ -5,27 +5,31 @@ require("node-jsx").install(
   }
 );
 
-var Express              = require("express");
-var Morgan               = require("morgan");
-var Webpack              = require("webpack");
-var WebpackDevServer     = require("webpack-dev-server");
+var Express               = require("express");
+var ServeStaticMiddleware = require("serve-static");
+var MorganMiddleware      = require("morgan");
+var Webpack               = require("webpack");
+var WebpackDevServer      = require("webpack-dev-server");
 
-var React                = require("react");
-var ReactRouter          = require("react-router");
+var React                 = require("react");
+var ReactRouter           = require("react-router");
 
 const NAME = "Isomorphic React Test";
 
-var host = "localhost";
-var port = process.env.WEB_PORT || 8080;
+var host = require("my-local-ip")();
+var port = process.env.WEBSTORE_PORT || 8080;
 var webpackPort = port + 1;
 
-var webpackConfig = require("../webpack.config.js");
-webpackConfig.output.publicPath = "http://" + host + ":" + webpackPort + webpackConfig.output.publicPath;
+var webpackConfig = require("../webpack.config.js").getConfig(
+  {
+    "devServerOrigin":    "http://" + host + ":" + webpackPort
+  }
+);
 
 var server = new Express();
 
 server.use(
-  new Morgan("combined")
+  new MorganMiddleware("combined")
 );
 
 server.all(
@@ -38,6 +42,11 @@ server.all(
     );
     next();
   }
+);
+
+server.use(
+  "/static",
+  new ServeStaticMiddleware(__dirname + "/static")
 );
 
 server.get(
@@ -53,7 +62,7 @@ server.get(
           [
             "<!DOCTYPE html>",
             React.renderComponentToStaticMarkup(
-              require("./components/Scaffold.jsx")(
+              require("./components/generic/Scaffold.jsx")(
                 {
                   "scriptSrc":  webpackConfig.output.publicPath + "jsx.js",
                   "body":       {
@@ -65,6 +74,13 @@ server.get(
           ].join("\n")
         );
       }
+    ).catch(
+      function (error) {
+        console.log(error);
+
+        response.status = error.httpStatus;
+        response.end("ReactRouter errored.");
+      }
     );
   }
 );
@@ -74,7 +90,7 @@ var webpackDevServer = new WebpackDevServer(
     webpackConfig
   ),
   {
-    "hot":       true,
+    "hot":        true,
     "publicPath": webpackConfig.output.publicPath
   }
 );
@@ -83,7 +99,7 @@ try {
   server.listen(port);
 
   var logAppStart = function (name, port) {
-    console.info(" - " + name + " on port " + port + "…");
+    console.info(" - " + name + " on " + host + ":" + port + "…");
   };
 
   console.info("Now serving:");
