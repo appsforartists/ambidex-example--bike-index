@@ -1,0 +1,14 @@
+$iconButtonPadding:             12px;
+$iconButtonVisibleSize:         24px;
+
+.IconButton {
+  display:                      inline-block;
+  width:                        $iconButtonVisibleSize + 2 * $iconButtonPadding;
+  height:                       $iconButtonVisibleSize + 2 * $iconButtonPadding;
+  padding:                      $iconButtonPadding;
+
+  img {
+    width:                        $iconButtonVisibleSize;
+    height:                       $iconButtonVisibleSize;
+  }
+}

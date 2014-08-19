@@ -1,0 +1,29 @@
+@import "AppBar";
+
+.SideBar {
+  position:                     fixed !important;
+  top:                            0px;
+
+  height:                       100vh;
+  width:                        calc(100vw - #{$appBarHeight});
+
+  &.open {
+    @extend                       .layer_2;
+  }
+
+  &.left {
+    right:                        100vw;
+
+    &.open {
+      right:                        $appBarHeight;
+    }
+  }
+
+  &.right {
+    left:                           100vw;
+
+    &.open {
+      left:                           $appBarHeight;
+    }
+  }
+}

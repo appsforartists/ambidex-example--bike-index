@@ -13,6 +13,14 @@ module.exports = React.createClass(
                                           TODO: make titles work
                                         </title>
 
+                                        <meta
+                                          name    = "viewport"
+                                          content = "
+                                                      width=device-width,
+                                                      initial-scale=1
+                                                    "
+                                        />
+
                                         <script
                                           src = { this.props.scriptSrc }
                                           defer

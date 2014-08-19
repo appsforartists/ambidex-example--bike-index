@@ -1,0 +1,67 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,500italic,400,400italic,300,300italic);
+
+body {
+  font-family:                  "Roboto", sans-serif;
+}
+
+// Typographic Scale from [Google Material Design Styleguide](https://www.google.com/design/spec/style/typography.html#typography-standard-styles)
+
+.display_4_text {
+  font-size:                    112px;
+  font-weight:                  300;
+}
+
+.display_3_text {
+  font-size:                     56px;
+  font-weight:                  400;
+}
+
+.display_2_text {
+  font-size:                     45px;
+  font-weight:                  400;
+}
+
+.display_1_text {
+  font-size:                     34px;
+  font-weight:                  400;
+}
+
+.headline_text {
+  font-size:                     24px;
+  font-weight:                  400;
+}
+
+.title_text {
+  font-size:                     20px;
+  font-weight:                  500;
+}
+
+.subheadline_text {
+  font-size:                     16px;
+  font-weight:                  400;
+}
+
+.body_2_text {
+  font-size:                     14px;
+  font-weight:                  500;
+}
+
+.body_1_text {
+  font-size:                     14px;
+  font-weight:                  400;
+}
+
+.caption_text {
+  font-size:                     12px;
+  font-weight:                  400;
+}
+
+.menu_text {
+  font-size:                     14px;
+  font-weight:                  500;
+}
+
+.button_text {
+  font-size:                     14px;
+  font-weight:                  500;
+}

@@ -1,0 +1,74 @@
+// Shadow values from https://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality
+
+.layer {
+  position:                     relative;
+
+  &::before {
+    content:                      " ";
+    position:                     absolute;
+    top:                            0px;
+    left:                           0px;
+    width:                        100%;
+    height:                       100%;
+  }
+}
+
+.layer_1 {
+  @extend                       .layer;
+
+  z-index:                      10000;
+  box-shadow:                   0px 1px 1.5px rgba(  0,   0,   0, .12);
+
+  &::before {
+    box-shadow:                   0px 1px 1px rgba(  0,   0,   0, .24);
+  }
+}
+
+
+.layer_2 {
+  @extend                       .layer;
+
+  z-index:                      20000;
+  box-shadow:                   0px 3px 3px rgba(  0,   0,   0, .16);
+
+  &::before {
+    box-shadow:                   0px 3px 3px rgba(  0,   0,   0, .23);
+  }
+}
+
+
+.layer_3 {
+  @extend                       .layer;
+
+  z-index:                      30000;
+  box-shadow:                   0px 10px 10px rgba(  0,   0,   0, .19);
+
+  &::before {
+    box-shadow:                   0px 6px 3px rgba(  0,   0,   0, .23);
+  }
+}
+
+
+.layer_4 {
+  @extend                       .layer;
+
+  z-index:                      40000;
+  box-shadow:                   0px 14px 14px rgba(  0,   0,   0, .25);
+
+  &::before {
+    box-shadow:                   0px 10px 5px rgba(  0,   0,   0, .22);
+  }
+}
+
+
+.layer_5 {
+  @extend                       .layer;
+
+  z-index:                      50000;
+  box-shadow:                   0px 19px 19px rgba(  0,   0,   0, .30);
+
+  &::before {
+    box-shadow:                   0px 15px 6px rgba(  0,   0,   0, .22);
+  }
+}
+

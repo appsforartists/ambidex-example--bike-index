@@ -1,0 +1,26 @@
+@import "IconButton";
+
+$appBarHeight:                   56px;
+
+.AppBar {
+  @extend                       .title_text;
+  @extend                       .layer_1;
+
+  position:                     absolute;
+  top:                            0px;
+  left:                           0px;
+
+  padding:                       16px;
+  width:                        100vw;
+  height:                       $appBarHeight;
+
+  .Logo img {
+    max-height:                 24px;
+  }
+
+  .IconButton {
+    position:                     relative;
+    left:                         -$iconButtonPadding;
+    top:                          -$iconButtonPadding;
+  }
+}
