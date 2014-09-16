@@ -1,8 +1,10 @@
 .SideBar {
   .Drawer {
-    @extend                       .easeInOut;
     transition-property:          transform -webkit-transform;
-    transition-duration:             .4s;
+
+    // drawer closing
+    @extend                       .easeInOut;
+    transition-duration:             .6s;
 
     // avoids a bug in Chrome for Android where the z-index isn't set until
     // after the transition finishes
@@ -61,14 +63,6 @@
   }
 
   .Scrim {
-    position:                     fixed;
-    top:                            0px;
-    left:                           0px;
-    z-index:                        0;
-
-    width:                        100vw;
-    height:                       100vh;
-
     background-color:             black;
     transition-property:          opacity;
     opacity:                        0;
@@ -77,6 +71,10 @@
   &.open {
     .Drawer {
       @extend                       .layer_2;
+
+      // drawer opening
+      @extend                       .easeOut;
+      transition-duration:             .4s;
 
       &.left {
         transform:                      translateX(
@@ -96,6 +94,15 @@
     }
 
     .Scrim {
+      position:                     fixed;
+      top:                            0px;
+      left:                           0px;
+
+      width:                        100vw;
+      height:                       100vh;
+
+      z-index:                      $below_layer_2;
+
       opacity:                        0.16;
     }
   }

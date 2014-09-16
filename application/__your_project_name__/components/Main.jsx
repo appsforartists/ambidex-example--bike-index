@@ -44,8 +44,8 @@ module.exports = React.createClass(
                                         appBarActionButtons     = {
                                                                     <div>
                                                                       <IconButton
-                                                                        src     = { settings.STATIC_URL + "generic/images/profile.svg" }
-                                                                        onClick = { ProfileActions.show }
+                                                                        src        = { settings.STATIC_URL + "generic/images/profile.svg" }
+                                                                        onTouchTap = { ProfileActions.show }
                                                                       />
                                                                     </div>
                                                                   }

@@ -8,12 +8,12 @@ var ReactRouter = require("react-router");
 module.exports = React.createClass(
   {
     "iosClickHack":       function () {
-                            /* iOS won't let you click things that don't have
+                            /* iOS won't let you click things that don't have 
                              * either `cursor: pointer;` or an `onclick` method.
                              *
                              * [More info at React issue #1169](https://github.com/facebook/react/issues/1169)
                              *
-                             * This workaround was shamelessly inspired by
+                             * This workaround was shamelessly inspired by 
                              * [react-bootstrap's Modal.jsx](https://github.com/react-bootstrap/react-bootstrap/blob/07de801f05ba2816c86a31e74ff8e6afb36ae096/src/Modal.jsx#L114) */
 
                             this.refs.scrim.getDOMNode().onclick = this.refs.scrim.getDOMNode().onclick || function () {};
@@ -40,9 +40,9 @@ module.exports = React.createClass(
                                       }
                                     >
                                       <div
-                                        className = "Scrim"
-                                        onClick   = { this.props.hideAction }
-                                        ref       = "scrim"
+                                        className   = "Scrim"
+                                        onTouchTap  = { this.props.hideAction }
+                                        ref         = "scrim"
                                       />
 
                                       <div
@@ -54,7 +54,9 @@ module.exports = React.createClass(
                                           ].join(" ")
                                         }
                                       >
-                                        { this.props.content }
+                                        <div className = "ScrollPane">
+                                          { this.props.content }
+                                        </div>
                                       </div>
                                     </div>;
                           }

@@ -7,6 +7,9 @@ $appBarPadding:                  16px;
   @extend                       .title_text;
   @extend                       .layer_1;
 
+  display:                      flex;
+  justify-content:              space-between;
+
   position:                     absolute;
   top:                            0px;
   left:                           0px;
@@ -26,11 +29,7 @@ $appBarPadding:                  16px;
   }
 
   .ActionButtons {
-    position:                     absolute;
-    top:                            0px;
-    right:                          0px;
     height:                       100%;
-    padding:                      $appBarPadding;
 
     .IconButton {
       left:                         $iconButtonPadding;

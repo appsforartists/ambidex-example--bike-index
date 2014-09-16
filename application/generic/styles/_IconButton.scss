@@ -2,7 +2,11 @@ $iconButtonPadding:             12px;
 $iconButtonVisibleSize:         24px;
 
 .IconButton {
-  display:                      inline-block;
+  display:                      flex;
+  flex-direction:               column;
+  justify-content:              center;
+  align-items:                  center;
+
   width:                        $iconButtonVisibleSize + 2 * $iconButtonPadding;
   height:                       $iconButtonVisibleSize + 2 * $iconButtonPadding;
   padding:                      $iconButtonPadding;
@@ -13,4 +17,10 @@ $iconButtonVisibleSize:         24px;
     width:                        $iconButtonVisibleSize;
     height:                       $iconButtonVisibleSize;
   }
+}
+
+// Reject default styling for `a` tags
+a.IconButton {
+  color:                        inherit;
+  text-decoration:              none;
 }

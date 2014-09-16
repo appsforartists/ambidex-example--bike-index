@@ -1,5 +1,7 @@
 var React = require("react");
 
+require("react-tap-event-plugin")();
+
 var containerSelector = "body";
 
 var mountReact = function() {

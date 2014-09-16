@@ -11,26 +11,24 @@ var settings = require("../../settings");
 module.exports = React.createClass(
   {
     "render":             function () {
-                            var logoAndMaybeNavIcon;
-
                             if (this.props.shouldShowNavIcon) {
-                              logoAndMaybeNavIcon = <IconButton
-                                                      src     = { settings.STATIC_URL + "generic/images/nav.svg" }
-                                                      onClick = { this.props.showNavAction }
-                                                    />
-                            } else {
-                              logoAndMaybeNavIcon = <a
-                                                      href      = "/"
-                                                      className = "Logo"
-                                                    >
-                                                      <img src = { this.props.logoSrc } />
-                                                    </a>;
+                              var maybeNavIcon =  <IconButton
+                                                    src        = { settings.STATIC_URL + "generic/images/nav.svg" }
+                                                    onTouchTap = { this.props.showNavAction }
+                                                  />
                             }
 
                             return  <nav
                                       className = "AppBar"
                                     >
-                                      { logoAndMaybeNavIcon }
+                                      { maybeNavIcon }
+                                      
+                                      <a
+                                        href      = "/"
+                                        className = "Logo"
+                                      >
+                                        <img src = { this.props.logoSrc } />
+                                      </a>
 
                                       <div className = "ActionButtons">
                                         { this.props.actionButtons }
