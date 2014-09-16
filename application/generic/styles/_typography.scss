@@ -9,59 +9,85 @@ body {
 .display_4_text {
   font-size:                    112px;
   font-weight:                  300;
+  opacity:                         .54;
+  white-space:                  nowrap;
+  letter-spacing:               -10px;
 }
 
 .display_3_text {
   font-size:                     56px;
   font-weight:                  400;
+  opacity:                         .54;
+  white-space:                  nowrap;
 }
 
 .display_2_text {
   font-size:                     45px;
   font-weight:                  400;
+  opacity:                         .54;
+  line-spacing:                  48px;
 }
 
 .display_1_text {
   font-size:                     34px;
   font-weight:                  400;
+  opacity:                         .54;
+  line-spacing:                  40px;
 }
 
 .headline_text {
   font-size:                     24px;
   font-weight:                  400;
+  opacity:                         .87;
+  line-spacing:                  32px;
 }
 
 .title_text {
   font-size:                     20px;
   font-weight:                  500;
+  opacity:                         .87;
+  white-space:                  nowrap;
 }
 
 .subheadline_text {
   font-size:                     16px;
   font-weight:                  400;
+  opacity:                         .87;
+  line-spacing:                  28px;
 }
 
 .body_2_text {
   font-size:                     14px;
   font-weight:                  500;
+  opacity:                         .87;
+  line-spacing:                  24px;
 }
 
 .body_1_text {
   font-size:                     14px;
   font-weight:                  400;
+  opacity:                         .87;
+  line-spacing:                  20px;
 }
 
 .caption_text {
   font-size:                     12px;
   font-weight:                  400;
+  opacity:                         .54;
+  white-space:                  nowrap;
 }
 
 .menu_text {
   font-size:                     14px;
   font-weight:                  500;
+  opacity:                         .87;
+  white-space:                  nowrap;
 }
 
 .button_text {
   font-size:                     14px;
   font-weight:                  500;
+  opacity:                         .87;
+  white-space:                  nowrap;
+  text-transform:               uppercase;
 }
