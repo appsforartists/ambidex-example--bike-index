@@ -1,0 +1,6 @@
+// All tweens should have follow through.  It just looks better.
+// http://en.wikipedia.org/wiki/12_basic_principles_of_animation#Follow_through_and_overlapping_action
+
+.easeInOut {
+  transition-timing-function: cubic-bezier(0.470, -0.200, 0.495, 1.235);
+}

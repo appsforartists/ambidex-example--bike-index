@@ -14,15 +14,13 @@ module.exports = (
   >
     <Route
       path    = "/"
-      handler = { /* require('./components/__project_name__/Main.jsx') */ require('./components/generic/Main.jsx') }
+      handler = { require('./__your_project_name__/components/Main.jsx') }
     >
-      { /*
-        <Route
-          path    = "/"
-          name    = "home"
-          handler = { require('./components/__project_name__/Home.jsx') }
-        />
-      */ }
+      <Route
+        path    = "/"
+        name    = "home"
+        handler = { require('./__your_project_name__/components/Home.jsx') }
+      />
     </Route>
   </Routes>
 );

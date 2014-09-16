@@ -1,0 +1,102 @@
+.SideBar {
+  .Drawer {
+    @extend                       .easeInOut;
+    transition-property:          transform -webkit-transform;
+    transition-duration:             .4s;
+
+    // avoids a bug in Chrome for Android where the z-index isn't set until
+    // after the transition finishes
+    @extend                       .layer_2;
+    box-shadow:                   none;
+
+    position:                     fixed !important;
+    top:                            0px;
+
+    height:                       100vh;
+    width:                        calc(100vw - #{$appBarHeight});
+
+    background-color:             white;
+
+    /*  The background will peek through behind the drawer if we
+     *  use a tween with follow through.
+     *
+     *  We can prevent this by creating an ::after pseudo-element
+     *  and using it to cover up the hole.
+     */
+    $drawerBloomerWidth:          5vw;
+
+    &::after {
+      content:                      " ";
+      display:                      block;
+
+      position:                     absolute;
+      top:                            0px;
+
+      width:                        $drawerBloomerWidth;
+      height:                       100%;
+
+      background-color:             inherit;
+    }
+
+    /*  We want the right edge of the drawer to match the left
+     *  edge of the viewport (and vice-versa).  We do this by
+     *  telling the left drawer to be one viewport-width away
+     *  from the right edge of the screen.
+     */
+    &.left {
+      right:                        100vw;
+
+      &::after {
+        left:                       -$drawerBloomerWidth;
+      }
+    }
+
+    &.right {
+      left:                         100vw;
+
+      &::after {
+        right:                      -$drawerBloomerWidth;
+      }
+    }
+  }
+
+  .Scrim {
+    position:                     fixed;
+    top:                            0px;
+    left:                           0px;
+    z-index:                        0;
+
+    width:                        100vw;
+    height:                       100vh;
+
+    background-color:             black;
+    transition-property:          opacity;
+    opacity:                        0;
+  }
+
+  &.open {
+    .Drawer {
+      @extend                       .layer_2;
+
+      &.left {
+        transform:                      translateX(
+                                          calc(
+                                            100vw - #{$appBarHeight}
+                                          )
+                                        );
+      }
+
+      &.right {
+        transform:                      translateX(
+                                          calc(
+                                            #{$appBarHeight} - 100vw
+                                          )
+                                        );
+      }
+    }
+
+    .Scrim {
+      opacity:                        0.16;
+    }
+  }
+}

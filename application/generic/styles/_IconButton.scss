@@ -7,6 +7,8 @@ $iconButtonVisibleSize:         24px;
   height:                       $iconButtonVisibleSize + 2 * $iconButtonPadding;
   padding:                      $iconButtonPadding;
 
+  cursor:                       pointer;
+
   img {
     width:                        $iconButtonVisibleSize;
     height:                       $iconButtonVisibleSize;
