@@ -13,10 +13,29 @@
   }
 }
 
+      $layer_0:                   0;
+$below_layer_0: calc(#{$layer_0} - 1000);
+$above_layer_0: calc(#{$layer_0} + 1000);
+
+.layer_0 {
+  @extend                       .layer;
+
+  z-index:                      $layer_0;
+  box-shadow:                   none;
+
+  &::before {
+    box-shadow:                   none;
+  }
+}
+
+      $layer_1:               10000;
+$below_layer_1: calc(#{$layer_1} - 1000);
+$above_layer_1: calc(#{$layer_1} + 1000);
+
 .layer_1 {
   @extend                       .layer;
 
-  z-index:                      10000;
+  z-index:                      $layer_1;
   box-shadow:                   0px 1px 1.5px rgba(  0,   0,   0, .12);
 
   &::before {
@@ -24,11 +43,14 @@
   }
 }
 
+      $layer_2:               20000;
+$below_layer_2: calc(#{$layer_2} - 1000);
+$above_layer_2: calc(#{$layer_2} + 1000);
 
 .layer_2 {
   @extend                       .layer;
 
-  z-index:                      20000;
+  z-index:                      $layer_2;
   box-shadow:                   0px 3px 3px rgba(  0,   0,   0, .16);
 
   &::before {
@@ -36,11 +58,14 @@
   }
 }
 
+      $layer_3:               30000;
+$below_layer_3: calc(#{$layer_3} - 1000);
+$above_layer_3: calc(#{$layer_3} + 1000);
 
 .layer_3 {
   @extend                       .layer;
 
-  z-index:                      30000;
+  z-index:                      $layer_3;
   box-shadow:                   0px 10px 10px rgba(  0,   0,   0, .19);
 
   &::before {
@@ -48,11 +73,14 @@
   }
 }
 
+      $layer_4:               40000;
+$below_layer_4: calc(#{$layer_4} - 1000);
+$above_layer_4: calc(#{$layer_4} + 1000);
 
 .layer_4 {
   @extend                       .layer;
 
-  z-index:                      40000;
+  z-index:                      $layer_4;
   box-shadow:                   0px 14px 14px rgba(  0,   0,   0, .25);
 
   &::before {
@@ -60,11 +88,14 @@
   }
 }
 
+      $layer_5:               50000;
+$below_layer_5: calc(#{$layer_5} - 1000);
+$above_layer_5: calc(#{$layer_5} + 1000);
 
 .layer_5 {
   @extend                       .layer;
 
-  z-index:                      50000;
+  z-index:                      $layer_5;
   box-shadow:                   0px 19px 19px rgba(  0,   0,   0, .30);
 
   &::before {
