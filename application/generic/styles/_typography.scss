@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:500,500italic,400,400italic,300,300italic);
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,500italic,400,400italic,300,300italic|Roboto+Condensed:400);
 
 body {
   font-family:                  "Roboto", sans-serif;
@@ -6,88 +6,143 @@ body {
 
 // Typographic Scale from [Google Material Design Styleguide](https://www.google.com/design/spec/style/typography.html#typography-standard-styles)
 
-.display_4_text {
+%truncateText {
+  white-space:                  nowrap;
+  text-overflow:                ellipsis;
+  overflow:                     hidden;
+}
+
+%dontTruncateText {
+  white-space:                  normal;
+}
+
+%display4Text {
   font-size:                    112px;
   font-weight:                  300;
-  opacity:                         .54;
-  white-space:                  nowrap;
+  opacity:                      .54;
   letter-spacing:               -10px;
+
+  @extend                       %truncateText;
 }
 
-.display_3_text {
-  font-size:                     56px;
+%display3Text {
+  font-size:                    56px;
   font-weight:                  400;
-  opacity:                         .54;
-  white-space:                  nowrap;
+  opacity:                      .54;
+
+  @extend                       %truncateText;
 }
 
-.display_2_text {
-  font-size:                     45px;
+%display2Text {
+  font-size:                    45px;
   font-weight:                  400;
-  opacity:                         .54;
-  line-spacing:                  48px;
+  opacity:                      .54;
+  line-spacing:                 48px;
 }
 
-.display_1_text {
-  font-size:                     34px;
+%display1Text {
+  font-size:                    34px;
   font-weight:                  400;
-  opacity:                         .54;
-  line-spacing:                  40px;
+  opacity:                      .54;
+  line-spacing:                 40px;
 }
 
-.headline_text {
-  font-size:                     24px;
+%headlineText {
+  font-size:                    24px;
   font-weight:                  400;
-  opacity:                         .87;
-  line-spacing:                  32px;
+  opacity:                      .87;
+  line-spacing:                 32px;
 }
 
-.title_text {
-  font-size:                     20px;
+%titleText {
+  font-size:                    20px;
   font-weight:                  500;
-  opacity:                         .87;
-  white-space:                  nowrap;
+  opacity:                      .87;
+
+  @extend                       %truncateText;
 }
 
-.subheadline_text {
-  font-size:                     16px;
+%subheadlineText {
+  font-size:                    16px;
   font-weight:                  400;
-  opacity:                         .87;
-  line-spacing:                  28px;
+  opacity:                      .87;
+  line-spacing:                 28px;
 }
 
-.body_2_text {
-  font-size:                     14px;
+%listItemText {
+  font-size:                    14px;
   font-weight:                  500;
-  opacity:                         .87;
-  line-spacing:                  24px;
+  opacity:                      .87;
+  line-height:                  $touchTargetMinimumSize;
 }
 
-.body_1_text {
-  font-size:                     14px;
+%body2Text {
+  font-size:                    14px;
+  font-weight:                  500;
+  opacity:                      .87;
+  line-spacing:                 24px;
+}
+
+%body1Text {
+  font-size:                    14px;
   font-weight:                  400;
-  opacity:                         .87;
-  line-spacing:                  20px;
+  opacity:                      .87;
+  line-spacing:                 20px;
 }
 
-.caption_text {
-  font-size:                     12px;
+%captionText {
+  font-size:                    12px;
   font-weight:                  400;
-  opacity:                         .54;
-  white-space:                  nowrap;
+  opacity:                      .54;
+
+  @extend                       %truncateText;
 }
 
-.menu_text {
-  font-size:                     14px;
+%gridTileTitleText {
+  font-size:                    16px;
   font-weight:                  500;
-  opacity:                         .87;
-  white-space:                  nowrap;
+
+  @extend                       %truncateText;
 }
 
-.button_text {
-  font-size:                     14px;
+%gridTileSubtitleText {
+  font-size:                    12px;
+  font-weight:                  400;
+
+  @extend                       %truncateText;
+}
+
+%gridTileBodyText {
+  font-size:                    14px;
+  font-weight:                  400;
+
+  @extend                       %truncateText;
+}
+
+%gridTileBoldBodyText {
   font-weight:                  500;
-  opacity:                         .87;
-  white-space:                  nowrap;
+
+  @extend                       %gridTileBodyText;
+}
+
+%menuText {
+  font-size:                    14px;
+  font-weight:                  500;
+  opacity:                      .87;
+
+  @extend                       %truncateText;
+}
+
+%buttonText {
+  font-size:                    14px;
+  font-weight:                  500;
+  opacity:                      .87;
   text-transform:               uppercase;
+
+  @extend                       %truncateText;
+
+  display:                      inline-block;
+  min-height:                   48px;
+  padding:                      14px  12px;
+  cursor:                       pointer;
 }

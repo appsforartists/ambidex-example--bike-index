@@ -1,0 +1,18 @@
+.MyBikes {
+  h1 {
+    @extend                       %headlineText;
+    color:                        $accentColor1;
+    text-align:                   center;
+
+    height:                       $appBarHeight;
+    padding:                      $appBarPadding;
+    margin:                       0px;
+    margin-bottom:                8px;
+  }
+
+  .Cards {
+    display:                      flex;
+    flex-direction:               column;
+    width:                        100%;
+  }
+}

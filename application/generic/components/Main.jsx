@@ -1,59 +1,62 @@
-/**
- * @jsx React.DOM
- */
-
-var React       = require("react");
+var Ambidex     = require("Ambidex");
+var React       = require("react/addons");
 var ReactRouter = require("react-router");
+
+RouteHandler = ReactRouter.RouteHandler;
 
 var AppBar  = require("./AppBar.jsx");
 var SideBar = require("./SideBar.jsx");
 
-var NavActions             = require("../actions/NavActions.js");
-var NavVisibilityDatastore = require("../datastores/NavVisibilityDatastore.js");
-
-module.exports = React.createClass(
+var Main = React.createClass(
   {
-    "getInitialState":    function () {
-                            return {
-                              "leftSideBarIsOpen":  false
-                            };
-                          },
+    "mixins":                     [
+                                    Ambidex.mixinCreators.connectStoresToLocalState(
+                                      [
+                                        "LeftSideBarIsOpen",
+                                        "RightSideBarIsOpen"
+                                      ]
+                                    ),
+                                  ],
 
-    "componentDidMount":  function () {
-                            NavVisibilityDatastore.listen(
-                              leftSideBarIsOpen => this.setState({"leftSideBarIsOpen": leftSideBarIsOpen})
-                            );
-                          },
+    "render":                     function () {
+                                    var leftSideBar = this.props.leftSideBar
+                                      ? <SideBar
+                                          side       = "left"
+                                          content    = { this.props.leftSideBar }
+                                          hideAction = { this.getRefluxAction("hideLeftSideBar") }
+                                          isOpen     = { this.state.leftSideBarIsOpen }
+                                        />
+                                      : "";
 
-    "render":             function () {
-                            var leftSideBar = this.props.leftSideBar 
-                              ? <SideBar
-                                  side       = "left"
-                                  content    = { this.props.leftSideBar }
-                                  hideAction = { NavActions.hide }
-                                  isOpen     = { this.state.leftSideBarIsOpen }
-                                />
-                              : "";
+                                    var rightSideBar = this.props.rightSideBar
+                                      ? <SideBar
+                                          side       = "right"
+                                          content    = { this.props.rightSideBar }
+                                          hideAction = { this.getRefluxAction("hideRightSideBar") }
+                                          isOpen     = { this.state.rightSideBarIsOpen }
+                                        />
+                                      : "";
 
-                            return  <div>
-                                      <AppBar
-                                        shouldShowNavIcon = { Boolean(leftSideBar) }
-                                        showNavAction     = { NavActions.show }
-                                        logoSrc           = { this.props.logoSrc }
-                                        actionButtons     = { this.props.appBarActionButtons }
-                                      />
+                                    return  <div className = "Main">
+                                              <AppBar
+                                                shouldShowNavIcon   = { Boolean(leftSideBar) }
+                                                showNavAction       = { this.getRefluxAction("showLeftSideBar") }
+                                                imagesURL           = { this.props.staticURL + "images/" }
+                                                makeLogoSilhouette  = { this.props.makeLogoSilhouette }
+                                                logoSrc             = { this.props.logoSrc }
+                                                actionButtons       = { this.props.appBarActionButtons }
+                                              />
 
-                                      { leftSideBar }
+                                              { leftSideBar }
 
-                                      <this.props.activeRouteHandler />
+                                              <div className = "Content">
+                                                <RouteHandler />
+                                              </div>
 
-                                      <SideBar
-                                        side       = "right"
-                                        content    = { this.props.rightSideBar }
-                                        hideAction = { this.props.rightSideBarHideAction }
-                                        isOpen     = { this.props.rightSideBarIsOpen }
-                                      />
-                                    </div>;
-                          }
+                                              { rightSideBar }
+                                            </div>;
+                                  }
   }
 );
+
+module.exports = Main;

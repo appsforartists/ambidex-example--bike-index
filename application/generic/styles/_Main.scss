@@ -1,7 +1,13 @@
+$touchTargetMinimumSize:      48px;
+
 @import "./typography";
+@import "./colors";
 @import "./layering";
 @import "./easing";
 
+@import "./Card";
+@import "./Grid";
+@import "./Silhouette";
 @import "./IconButton";
 @import "./AppBar";
 @import "./SideBar";
@@ -9,8 +15,27 @@
 
 * {
   box-sizing:                   border-box;
+  -webkit-tap-highlight-color:  transparent;
 }
 
 body {
-  margin-top:                   $appBarHeight + 8px;
+  margin:                       0px;
+}
+
+.Main {
+  .Content {
+    margin-top:                   $appBarHeight + 4;
+
+    // make a new stacking context and set it to z = 0
+    position:                     relative;
+    z-index:                      0;
+  }
+}
+
+
+a.Button {
+  @extend                         %buttonText;
+  color:                          $primaryColor1;
+
+  text-decoration:                none;
 }

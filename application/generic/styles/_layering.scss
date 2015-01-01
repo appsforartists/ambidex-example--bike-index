@@ -1,11 +1,12 @@
 // Shadow values from https://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality
 
-.layer {
+%layer {
   position:                     relative;
 
   &::before {
     content:                      " ";
     position:                     absolute;
+    z-index:                       -1;      // Forces shadow to be behind the element it's applied to
     top:                            0px;
     left:                           0px;
     width:                        100%;
@@ -13,14 +14,14 @@
   }
 }
 
-      $layer_0:                   0;
-$below_layer_0: calc(#{$layer_0} - 1000);
-$above_layer_0: calc(#{$layer_0} + 1000);
+     $layer0:                       0;
+$belowLayer0:                   #{$layer0 - 1000};
+$aboveLayer0:                   #{$layer0 + 1000};
 
-.layer_0 {
-  @extend                       .layer;
+%layer0 {
+  @extend                       %layer;
 
-  z-index:                      $layer_0;
+  z-index:                      $layer0;
   box-shadow:                   none;
 
   &::before {
@@ -28,78 +29,126 @@ $above_layer_0: calc(#{$layer_0} + 1000);
   }
 }
 
-      $layer_1:               10000;
-$below_layer_1: calc(#{$layer_1} - 1000);
-$above_layer_1: calc(#{$layer_1} + 1000);
+     $layer1:                   10000;
+$belowLayer1:                   #{$layer1 - 1000};
+$aboveLayer1:                   #{$layer1 + 1000};
 
-.layer_1 {
-  @extend                       .layer;
+$layer1TopShadow:               0px 1px 1.5px rgba(  0,   0,   0, .12);
+$layer1BottomShadow:            0px 1px 1px   rgba(  0,   0,   0, .24);
 
-  z-index:                      $layer_1;
-  box-shadow:                   0px 1px 1.5px rgba(  0,   0,   0, .12);
+%layer1 {
+  @extend                       %layer;
+
+  z-index:                      $layer1;
+  box-shadow:                   $layer1TopShadow;
 
   &::before {
-    box-shadow:                   0px 1px 1px rgba(  0,   0,   0, .24);
+    box-shadow:                   $layer1BottomShadow;
   }
 }
 
-      $layer_2:               20000;
-$below_layer_2: calc(#{$layer_2} - 1000);
-$above_layer_2: calc(#{$layer_2} + 1000);
+%svgLayer1 {
+  filter:                     drop-shadow(
+                                $layer1TopShadow
+                              );
+}
 
-.layer_2 {
-  @extend                       .layer;
 
-  z-index:                      $layer_2;
-  box-shadow:                   0px 3px 3px rgba(  0,   0,   0, .16);
+     $layer2:                   20000;
+$belowLayer2:                   #{$layer2 - 1000};
+$aboveLayer2:                   #{$layer2 + 1000};
+
+$layer2TopShadow:               0px 3px 3px rgba(  0,   0,   0, .16);
+$layer2BottomShadow:            0px 3px 3px rgba(  0,   0,   0, .23);
+
+%layer2 {
+  @extend                       %layer;
+
+  z-index:                      $layer2;
+  box-shadow:                   $layer2TopShadow;
 
   &::before {
-    box-shadow:                   0px 3px 3px rgba(  0,   0,   0, .23);
+    box-shadow:                   $layer2BottomShadow;
   }
 }
 
-      $layer_3:               30000;
-$below_layer_3: calc(#{$layer_3} - 1000);
-$above_layer_3: calc(#{$layer_3} + 1000);
+%svgLayer2 {
+  filter:                     drop-shadow(
+                                $layer2TopShadow
+                              );
+}
 
-.layer_3 {
-  @extend                       .layer;
 
-  z-index:                      $layer_3;
-  box-shadow:                   0px 10px 10px rgba(  0,   0,   0, .19);
+     $layer3:                   30000;
+$belowLayer3:                   #{$layer3 - 1000};
+$aboveLayer3:                   #{$layer3 + 1000};
+
+$layer3TopShadow:               0px 10px 10px rgba(  0,   0,   0, .19);
+$layer3BottomShadow:            0px  6px  3px rgba(  0,   0,   0, .23);
+
+%layer3 {
+  @extend                       %layer;
+
+  z-index:                      $layer3;
+  box-shadow:                   $layer3TopShadow;
 
   &::before {
-    box-shadow:                   0px 6px 3px rgba(  0,   0,   0, .23);
+    box-shadow:                   $layer3BottomShadow;
   }
 }
 
-      $layer_4:               40000;
-$below_layer_4: calc(#{$layer_4} - 1000);
-$above_layer_4: calc(#{$layer_4} + 1000);
+%svgLayer3 {
+  filter:                     drop-shadow(
+                                $layer3TopShadow
+                              );
+}
 
-.layer_4 {
-  @extend                       .layer;
 
-  z-index:                      $layer_4;
-  box-shadow:                   0px 14px 14px rgba(  0,   0,   0, .25);
+     $layer4:                   40000;
+$belowLayer4:                   #{$layer4 - 1000};
+$aboveLayer4:                   #{$layer4 + 1000};
+
+$layer4TopShadow:               0px 14px 14px rgba(  0,   0,   0, .25);
+$layer4BottomShadow:            0px 10px  5px rgba(  0,   0,   0, .22);
+
+%layer4 {
+  @extend                       %layer;
+
+  z-index:                      $layer4;
+  box-shadow:                   $layer4TopShadow;
 
   &::before {
-    box-shadow:                   0px 10px 5px rgba(  0,   0,   0, .22);
+    box-shadow:                   $layer4BottomShadow;
   }
 }
 
-      $layer_5:               50000;
-$below_layer_5: calc(#{$layer_5} - 1000);
-$above_layer_5: calc(#{$layer_5} + 1000);
+%svgLayer4 {
+  filter:                     drop-shadow(
+                                $layer4TopShadow
+                              );
+}
 
-.layer_5 {
-  @extend                       .layer;
 
-  z-index:                      $layer_5;
-  box-shadow:                   0px 19px 19px rgba(  0,   0,   0, .30);
+     $layer5:                   50000;
+$belowLayer5:                   #{$layer5 - 1000};
+$aboveLayer5:                   #{$layer5 + 1000};
+
+$layer5TopShadow:               0px 19px 19px rgba(  0,   0,   0, .30);
+$layer5BottomShadow:            0px 15px  6px rgba(  0,   0,   0, .22);
+
+%layer5 {
+  @extend                       %layer;
+
+  z-index:                      $layer5;
+  box-shadow:                   $layer5TopShadow;
 
   &::before {
-    box-shadow:                   0px 15px 6px rgba(  0,   0,   0, .22);
+    box-shadow:                   $layer5BottomShadow;
   }
 }
 
+%svgLayer5 {
+  filter:                     drop-shadow(
+                                $layer5TopShadow
+                              );
+}

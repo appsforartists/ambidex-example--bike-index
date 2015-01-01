@@ -1,51 +1,72 @@
-/**
- * @jsx React.DOM
- */
-
-var React       = require("react");
+var React       = require("react/addons");
 var ReactRouter = require("react-router");
 var classSet    = React.addons.classSet;
 
-module.exports = React.createClass(
+var Silhouette = require("./Silhouette.jsx");
+
+var IconButton = React.createClass(
   {
-    "render":             function () {
-                            /*  ReactRouter will break if you try to make a Link without
-                             *  a `to` attribute, but <IconButton> should work with
-                             *  internal links, external links, or onTouchTap handlers.
-                             *
-                             *  Therefore, we dynamically construct the button using
-                             *  either <Link> or <a>, as appropriate.
-                             */
+    "propTypes":                  {
+                                    "className":      React.PropTypes.string,
+                                    "onTouchTap":     React.PropTypes.func,
+                                    "linkTo":         React.PropTypes.string,
+                                    "href":           React.PropTypes.string,
+                                    "label":          React.PropTypes.string,
+                                    "makeSilhouette": React.PropTypes.bool,
+                                  },
 
-                            var linkClass;
-                            var linkAttributes = {
-                              "className":  classSet(
-                                              "IconButton",
-                                              this.props.className
-                                            ),
-                              "onTouchTap": this.props.onTouchTap
-                            };
+    "getDefaultProps":            function () {
+                                    return {
+                                      "makeSilhouette":   false
+                                    }
+                                  },
 
-                            if (this.props.linkTo) {
-                              linkClass         = ReactRouter.Link;
-                              linkAttributes.to = this.props.linkTo;
+    "render":                     function () {
+                                    /*  ReactRouter will break if you try to make a Link without
+                                     *  a `to` attribute, but <IconButton> should work with
+                                     *  internal links, external links, or onTouchTap handlers.
+                                     *
+                                     *  Therefore, we dynamically construct the button using
+                                     *  either <Link> or <a>, as appropriate.
+                                     */
+                                    var LinkClass;
+                                    var linkAttributes = {
+                                      "className":  classSet(
+                                                      "IconButton",
+                                                      this.props.className
+                                                    ),
+                                    };
 
-                            } else {
-                              linkClass           = React.DOM.a;
-                              linkAttributes.href = this.props.href;
-                            }
+                                    if (this.props.linkTo) {
+                                      LinkClass         = ReactRouter.Link;
+                                      linkAttributes.to = this.props.linkTo;
+                                    
+                                    } else {
+                                                            // React.DOM.a is now just "a"
+                                      LinkClass           = "a";
+                                      linkAttributes.href = this.props.href;
+                                    }
 
-                            return linkClass(
-                              linkAttributes,
-
-                              <img src = { this.props.src } />,
-
-                              this.props.label
-                                ? <label>
-                                    { this.props.label }
-                                  </label>
-                                : ""
-                            );
-                          }
+                                    var ImageClass = this.props.makeSilhouette
+                                      ? Silhouette
+                                      : "img";
+                                    
+                                    return  <LinkClass 
+                                              { ...this.props } 
+                                              { ...linkAttributes }
+                                            >
+                                              <ImageClass src = { this.props.src } />
+                                    
+                                              {
+                                                this.props.label
+                                                  ? <label>
+                                                      { this.props.label }
+                                                    </label>
+                                                  : ""
+                                              }
+                                            </LinkClass>;
+                                  }
   }
 );
+
+module.exports = IconButton;

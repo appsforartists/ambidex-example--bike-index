@@ -1,0 +1,18 @@
+.MyBikeCard {
+  @extend                       %layer2;
+
+  .Photos {
+    display:                      flex;
+    overflow-x:                   scroll;
+
+    img {
+      height:                       174px;
+      flex:                         none;
+    }
+  }
+
+  .ActionButtons {
+    display:                      flex;
+    justify-content:              flex-end;
+  }
+}

@@ -1,39 +1,59 @@
-/**
- * @jsx React.DOM
- */
+var React       = require("react/addons");
+var ReactRouter = require("react-router");
 
-var React = require("react");
+var Link = ReactRouter.Link;
 
 var IconButton = require("./IconButton.jsx");
+var Silhouette = require("./Silhouette.jsx");
 
-var settings = require("../../settings");
-
-module.exports = React.createClass(
+var AppBar = React.createClass(
   {
-    "render":             function () {
-                            if (this.props.shouldShowNavIcon) {
-                              var maybeNavIcon =  <IconButton
-                                                    src        = { settings.STATIC_URL + "generic/images/nav.svg" }
-                                                    onTouchTap = { this.props.showNavAction }
-                                                  />
-                            }
+    "propTypes":                  {
+                                    "imagesURL":          React.PropTypes.string.isRequired,
+                                    "logoSrc":            React.PropTypes.string.isRequired,
+                                    "actionButtons":      React.PropTypes.element,
+                                    "shouldShowNavIcon":  React.PropTypes.bool,
+                                    "showNavAction":      React.PropTypes.func,
+                                    "makeLogoSilhouette": React.PropTypes.bool,
+                                  },
 
-                            return  <nav
-                                      className = "AppBar"
-                                    >
-                                      { maybeNavIcon }
-                                      
-                                      <a
-                                        href      = "/"
-                                        className = "Logo"
-                                      >
-                                        <img src = { this.props.logoSrc } />
-                                      </a>
+    "getDefaultProps":            function () {
+                                    return {
+                                      "makeLogoSilhouette": false
+                                    }
+                                  },
 
-                                      <div className = "ActionButtons">
-                                        { this.props.actionButtons }
-                                      </div>
-                                    </nav>;
-                          }
+    "render":                     function () {
+                                    if (this.props.shouldShowNavIcon) {
+                                      var maybeNavIcon =  <IconButton
+                                                            src            = { this.props.imagesURL + "nav.svg" }
+                                                            onTouchTap     = { this.props.showNavAction }
+                                                            makeSilhouette = { true }
+                                                          />
+                                    }
+
+                                    var ImageClass = this.props.makeLogoSilhouette
+                                      ? Silhouette
+                                      : "img";
+
+                                    return  <nav
+                                              className = "AppBar"
+                                            >
+                                              { maybeNavIcon }
+
+                                              <Link
+                                                to        = "/"
+                                                className = "Logo"
+                                              >
+                                                <ImageClass src = { this.props.logoSrc } />
+                                              </Link>
+
+                                              <div className = "ActionButtons">
+                                                { this.props.actionButtons }
+                                              </div>
+                                            </nav>;
+                                  }
   }
 );
+
+module.exports = AppBar;

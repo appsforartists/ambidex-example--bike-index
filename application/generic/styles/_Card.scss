@@ -1,0 +1,74 @@
+$cardBorderRadius:              2px;
+
+.Card {
+  @extend                       %layer1;
+  flex-direction:               column;
+
+  margin:                       8px;
+  border-radius:                $cardBorderRadius;
+
+  // crops to border-radius
+  overflow:                     hidden;
+
+  a.Title {
+    color:                        $cardTitleColor;
+    text-decoration:              none;
+  }
+
+  .Image {
+    display:                      flex;
+  }
+
+  .BottomBar {
+    flex:                         none;
+
+    min-height:                   $touchTargetMinimumSize;
+    padding-left:                 8px;
+    padding-right:                8px;
+
+    background-color:             $accentColor1;
+    color:                        $primaryColor3;
+  }
+
+  &.overlaidTitle {
+    .Title {
+      @extend                       %headlineText;
+
+      position:                     absolute;
+      padding:                      16px;
+      display:                      flex;
+      align-items:                  flex-end;
+
+      width:                        100%;
+      height:                       calc(100% - #{ $touchTargetMinimumSize });
+
+      color:                        $cardTitleColor;
+      background:                   linear-gradient(to top, $cardTitleScrimColor, transparent, transparent);
+    }
+  }
+
+  &.polaroidTitle {
+    .Titles {
+      padding:                      16px;
+
+      // compensate for BottomBar's padding
+      padding-left:                 8px;
+      padding-right:                8px;
+    }
+
+    a.Titles {
+      text-decoration:              none;
+      color:                        inherit;
+      display:                      inline-block;
+      max-width:                    100%;
+    }
+
+    .Title {
+      @extend                       %gridTileTitleText;
+    }
+
+    .Subtitle {
+      @extend                       %gridTileSubtitleText;
+    }
+  }
+}

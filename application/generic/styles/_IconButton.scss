@@ -1,5 +1,6 @@
 $iconButtonPadding:             12px;
 $iconButtonVisibleSize:         24px;
+$iconButtonTotalSize:           $iconButtonVisibleSize + 2 * $iconButtonPadding;
 
 .IconButton {
   display:                      flex;
@@ -13,9 +14,25 @@ $iconButtonVisibleSize:         24px;
 
   cursor:                       pointer;
 
-  img {
+  img,
+  .Silhouette {
     width:                        $iconButtonVisibleSize;
     height:                       $iconButtonVisibleSize;
+  }
+
+  label {
+    @extend %captionText;
+
+    opacity:                      1;
+
+    // Allow lines to break because it looks better here (even though Material Design says captions don't break)
+    white-space:                  inherit;
+    text-align:                   center;
+
+    // trick flexbox into treating this as one line, so they stay
+    // top-aligned but centered
+    height:                       1em;
+    overflow-y:                   visible;
   }
 }
 

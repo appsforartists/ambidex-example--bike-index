@@ -1,14 +1,17 @@
 .SideBar {
+  $drawerTransitionDuration:    .6s;
+  $drawerMaxWidth:              400px;
+
   .Drawer {
     transition-property:          transform -webkit-transform;
 
     // drawer closing
     @extend                       .easeInOut;
-    transition-duration:             .6s;
+    transition-duration:          $drawerTransitionDuration;
 
     // avoids a bug in Chrome for Android where the z-index isn't set until
     // after the transition finishes
-    @extend                       .layer_2;
+    @extend                       %layer2;
     box-shadow:                   none;
 
     position:                     fixed !important;
@@ -16,6 +19,7 @@
 
     height:                       100vh;
     width:                        calc(100vw - #{$appBarHeight});
+    max-width:                    $drawerMaxWidth;
 
     background-color:             white;
 
@@ -63,14 +67,16 @@
   }
 
   .Scrim {
-    background-color:             black;
     transition-property:          opacity;
-    opacity:                        0;
+    transition-duration:          $drawerTransitionDuration;
+
+    background-color:             black;
+    opacity:                      0;
   }
 
   &.open {
     .Drawer {
-      @extend                       .layer_2;
+      @extend                       %layer2;
 
       // drawer opening
       @extend                       .easeOut;
@@ -82,6 +88,10 @@
                                             100vw - #{$appBarHeight}
                                           )
                                         );
+
+        @media all and (min-width: #{$drawerMaxWidth + $appBarHeight}) {
+          transform:                      translateX($drawerMaxWidth);
+        }
       }
 
       &.right {
@@ -90,6 +100,10 @@
                                             #{$appBarHeight} - 100vw
                                           )
                                         );
+
+        @media all and (min-width: #{$drawerMaxWidth + $appBarHeight}) {
+          transform:                      translateX(-$drawerMaxWidth);
+        }
       }
     }
 
@@ -101,7 +115,7 @@
       width:                        100vw;
       height:                       100vh;
 
-      z-index:                      $below_layer_2;
+      z-index:                      $belowLayer2;
 
       opacity:                        0.16;
     }

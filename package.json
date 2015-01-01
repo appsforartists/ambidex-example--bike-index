@@ -1,43 +1,33 @@
 {
-  "name": "isomorphicReactTest",
+  "name": "ambidex-example--bike-index",
   "version": "0.0.0",
-  "description": "A sample project to play with running ReactRouter on the server",
-  "main": "application/server.js",
+  "description": "An Ambidex demonstration that displays the Bike Index",
+  "main": "init.js",
   "dependencies": {
-    "autoprefixer-loader": "0.1.1",
-    "compression": "1.0",
-    "css-loader": "0.7.1",
-    "express": "4.8.4",
-    "jsx-loader": "0.11.0",
-    "lazy.js": "git+https://github.com/appsforartists/lazy.js",
-    "morgan": "1.2.2",
-    "node-jsx": "0.11.0",
-    "prfun": "1.0.0",
-    "react": "0.11.1",
-    "react-router": "git+https://github.com/karlmikko/react-router",
-    "react-tap-event-plugin": "git+https://github.com/appsforartists/react-tap-event-plugin",
-    "reflux": "0.1.6",
-    "sass-loader": "0.2.0",
-    "serve-static": "1.5.3",
-    "style-loader": "0.7.0",
-    "webpack": "1.3"
+    "Ambidex": "git+https://github.com/appsforartists/Ambidex",
+    "isomorphic-reflux": "0.2.1",
+    "lazy.js": "0.4.0",
+    "mach": "1.0.0-rc4",
+    "make-node-env-global": "1.0",
+    "node-jsx": "0.12.4",
+    "react": "0.12",
+    "react-router": "0.11",
+    "respimage": "1.1.3",
+    "to-camel-case": "0.2.1"
   },
   "scripts": {
-    "start": "node --harmony ./application/server.js",
-    "stop": "killall isomorphic_react_test",
+    "start": "node --harmony ./init.js",
+    "stop": "killall ambidex-example--bike-index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:appsforartists/isomorphic_react_test.git"
+    "url": "git@github.com:appsforartists/ambidex-example--bike-index.git"
   },
   "contributors": [
     "Brenton Simpson <bresimpson@ebay.com> (http://appsforartists.com)"
   ],
   "devDependencies": {
-    "loader-utils": "0.2.3",
-    "my-local-ip": "git+https://github.com/appsforartists/my-local-ip",
-    "react-hot-loader": "0.3.0",
-    "webpack-dev-server": "1.4.10"
+    "my-local-ip": "git+https://github.com/appsforartists/my-local-ip"
   }
 }

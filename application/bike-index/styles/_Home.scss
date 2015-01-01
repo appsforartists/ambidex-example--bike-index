@@ -1,0 +1,63 @@
+.Home {
+  header {
+    padding:                      16px;
+    text-align:                   center;
+    color:                        $accentColor2;
+
+    & * {
+      padding:                      0px;
+      margin:                       0px;
+    }
+
+    h1 {
+      @extend                       %display1Text;
+      opacity:                      .7;
+    }
+
+    h2 {
+      @extend                       %headlineText;
+      @extend                       %dontTruncateText;
+      opacity:                      1.0;
+    }
+  }
+
+  .StolenBikes {
+    @extend                       .Grid;
+
+    
+    @mixin scaleStolenBikeCard($tilesPerRow) {
+      .StolenBikeCard {
+        width:                        getGridTileSize(
+                                        $tilesPerRow:   $tilesPerRow
+                                      );
+
+        height:                       getGridTileSize(
+                                        $tilesPerRow:   $tilesPerRow,
+                                        $adjustment:    74px
+                                      );
+      }
+    }
+
+    @include scaleStolenBikeCard($tilesPerRow: 2);
+
+    @media all and (min-width: 480px) {
+      @include scaleStolenBikeCard($tilesPerRow: 3);
+    }
+
+    @media all and (min-width: 590px) {
+      @include scaleStolenBikeCard($tilesPerRow: 4);
+    }
+
+    @media all and (min-width: 840px) {
+      @include scaleStolenBikeCard($tilesPerRow: 5);
+    }
+
+    @media all and (min-width: 1280px) {
+      @include scaleStolenBikeCard($tilesPerRow: 7);
+    }
+
+    @media all and (min-width: 1440px) {
+      @include scaleStolenBikeCard($tilesPerRow: 8);
+    }
+  }
+}
