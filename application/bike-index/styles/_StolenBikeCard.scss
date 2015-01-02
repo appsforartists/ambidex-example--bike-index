@@ -1,6 +1,10 @@
 .StolenBikeCard {
   @extend                       .GridTile;
 
+  .Image {
+    background-color:             white;
+  }
+
   &.polaroidTitle {
 
     // The spec says we can use either 16/12 or 14/14 font sizes
