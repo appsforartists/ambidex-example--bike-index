@@ -52,22 +52,24 @@ var BikeDetails = React.createClass(
                                                 </p>
 
                                                 <table className = "Components">
-                                                  {
-                                                    model.components.filter(
-                                                      component => component.manufacturerName && component.modelName
-                                                    ).map(
-                                                      (component, i) =>   <tr
-                                                                            key = { i }
-                                                                          >
-                                                                            <td>
-                                                                              { component.componentType }
-                                                                            </td>
-                                                                            <td>
-                                                                              { `${ component.manufacturerName } ${ component.modelName }` }
-                                                                            </td>
-                                                                          </tr>
-                                                    )
-                                                  }
+                                                  <tbody>
+                                                    {
+                                                      model.components.filter(
+                                                        component => component.manufacturerName && component.modelName
+                                                      ).map(
+                                                        (component, i) =>   <tr
+                                                                              key = { i }
+                                                                            >
+                                                                              <td>
+                                                                                { component.componentType }
+                                                                              </td>
+                                                                              <td>
+                                                                                { `${ component.manufacturerName } ${ component.modelName }` }
+                                                                              </td>
+                                                                            </tr>
+                                                      )
+                                                    }
+                                                  </tbody>
                                                 </table>
                                               </div>
                                             </div>;
