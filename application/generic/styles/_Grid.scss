@@ -8,7 +8,7 @@ $gridMargin: 4px;
     $mysteryNudge: 1px;
   }
 
-  @return calc(#{ $containerWidth }  /  #{ $tilesPerRow }  - #{ $gridMargin + $mysteryNudge } + #{ $adjustment });
+  @return calc(#{ $containerWidth }  /  #{ $tilesPerRow } + #{ $adjustment - ($gridMargin + $mysteryNudge) });
 }
 
 // These aren't nested because you can't extend nested selectors
@@ -27,6 +27,8 @@ $gridMargin: 4px;
 
 .GridTile {
   display:                        inline-flex;
+  flex-direction:                 column;
+
   margin:                         #{ $gridMargin / 2};
 }
 
