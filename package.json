@@ -7,7 +7,7 @@
     "Ambidex": "git+https://github.com/appsforartists/Ambidex",
     "isomorphic-reflux": "0.2.1",
     "lazy.js": "0.4.0",
-    "mach": "1.0.0-rc4",
+    "mach": "1.1.0",
     "make-node-env-global": "1.0",
     "node-jsx": "0.12.4",
     "react": "0.12",
