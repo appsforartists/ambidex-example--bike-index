@@ -3,7 +3,7 @@ var mach    = require("mach");
 
 var settings = require("./settings." + NODE_ENV + ".js");
 
-module.exports =  new Ambidex(
+module.exports = new Ambidex(
   {
     settings,
 
