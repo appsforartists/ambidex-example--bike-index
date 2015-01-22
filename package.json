@@ -26,8 +26,5 @@
   },
   "contributors": [
     "Brenton Simpson <bresimpson@ebay.com> (http://appsforartists.com)"
-  ],
-  "devDependencies": {
-    "my-local-ip": "git+https://github.com/appsforartists/my-local-ip"
-  }
+  ]
 }
