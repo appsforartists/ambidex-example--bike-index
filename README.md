@@ -1,23 +1,23 @@
 ## Introduction ##
 
-This is a sample application utilizing [Ambidex](https://github.com/appsforartists/Ambidex/).  For more information, please see [that repo](https://github.com/appsforartists/Ambidex/).
+This is a sample application utilizing [**Ambidex**](https://github.com/appsforartists/Ambidex/).  For more information, **please see [that repo](https://github.com/appsforartists/Ambidex/)**.
 
 ## Getting Started ##
 
-### Clone the repository ###
+#### Clone the repository ####
     git clone git@github.com:appsforartists/Ambidex.git
 
-### Install the dependencies ###
+#### Install the dependencies ####
     npm install
 
-### Add the appropriate lines to `/private/etc/hosts` ###
+#### Add the appropriate lines to `/private/etc/hosts` ####
     127.0.0.1       tardis.local
     127.0.0.1       bikeindex.local
 
-### Start the server ###
+#### Start the server ###
     npm start tardis
 
-### Navigate to the appropriate page in your browser ###
+#### Navigate to the appropriate page in your browser ####
  - http://tardis.local:8080/ or
  - http://bikeindex.local:8080/
 
