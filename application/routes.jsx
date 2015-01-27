@@ -1,3 +1,5 @@
+require("./polyfills.js");
+
 var React       = require("react/addons");
 var ReactRouter = require("react-router");
 
