@@ -39,13 +39,10 @@ var CurrentBike = {
                                                         // Let's investigate RxJS or Bacon.js to see if this would be easier
                                                         // to model with Observables.
 
-                                                        var bike = this.parent.stores.Bikes.state[this.bikeID];
+                                                        this.state = this.parent.stores.Bikes.state[this.bikeID];
+                                                        this.trigger(this.state);
 
-                                                        if (bike) {
-                                                          this.state = bike;
-                                                          this.trigger(this.state);
-
-                                                        } else {
+                                                        if (!this.state) {
                                                           this.parent.actions.getBike(this.bikeID);
                                                         }
                                                       },

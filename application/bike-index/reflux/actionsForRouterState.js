@@ -1,3 +1,5 @@
+var utilities    = require("Ambidex").addons.utilities;
+
 var refluxActionsForRouterState = [
   {
     "actionName":     "getStolenBikes",
@@ -13,6 +15,7 @@ var refluxActionsForRouterState = [
     "parameterName":  "bikeID",
     "actionName":     "viewBike",
     "storeName":      "CurrentBike",
+    "isReady":        utilities.hasContent,
   },
 ];
 

@@ -15,11 +15,18 @@ var BikeDetails = React.createClass(
     "getSectionTitle":            function () {
                                     var model = this.state.currentBike;
 
-                                    return model.name || model.title;
+                                    if (model)
+                                      return model.name || model.title;
                                   },
 
     "render":                     function () {
                                     var model = this.state.currentBike;
+
+                                    if (!model) {
+                                      return  <div className = "BikeDetails">
+                                                Loading…
+                                              </div>
+                                    }
 
                                     return  <div className = "BikeDetails">
                                               <ul className = "Photos">
