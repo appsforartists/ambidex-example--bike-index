@@ -1,4 +1,4 @@
-var Ambidex     = require("Ambidex");
+var Ambidex     = require("ambidex");
 
 var bikeIndexExample = require("../init.js");
 

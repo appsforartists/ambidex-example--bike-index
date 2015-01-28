@@ -1,5 +1,5 @@
 var React       = require("react");
-var Ambidex     = require("Ambidex");
+var Ambidex     = require("ambidex");
 
 var GenericMain = require( "../../generic/components/Main.jsx");
 var IconButton  = require( "../../generic/components/IconButton.jsx");

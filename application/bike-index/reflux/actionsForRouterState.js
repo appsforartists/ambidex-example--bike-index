@@ -1,4 +1,4 @@
-var utilities    = require("Ambidex").addons.utilities;
+var utilities    = require("ambidex").addons.utilities;
 
 var refluxActionsForRouterState = [
   {

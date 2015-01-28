@@ -1,4 +1,4 @@
-var Ambidex     = require("Ambidex");
+var Ambidex     = require("ambidex");
 var React       = require("react");
 
 var MyBikeCard = require("./MyBikeCard.jsx");

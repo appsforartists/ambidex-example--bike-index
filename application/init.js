@@ -1,4 +1,4 @@
-var Ambidex = require("Ambidex");
+var Ambidex = require("ambidex");
 var mach    = require("mach");
 
 var settings = require("./settings." + NODE_ENV + ".js");
