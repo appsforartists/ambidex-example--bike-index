@@ -23,5 +23,5 @@ This is a sample application utilizing [**Ambidex**](https://github.com/appsfora
 
 ## Credits ##
 
- - Data provided by the [Bike Index](https://bikeindex.org) API (check out the [docs](https://bikeindex.org/documentation/api_v2))
+ - Data provided by the [Bike Index](https://bikeindex.org) API (check out the [docs](https://bikeindex.org/documentation/api_v2)).
  - Icons courtesy of [Google Material Design](https://github.com/google/material-design-icons).
