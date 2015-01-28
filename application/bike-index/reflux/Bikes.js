@@ -60,7 +60,7 @@ var Bikes = {
 
                       "getBikeFromAPI":     function (bikeID) {
                                               return this.getFromAPI(`bikes/${ bikeID }/`).then(
-                                                dict => dict.bikes
+                                                dict => dict.bike
                                               );
                                             }
                     },

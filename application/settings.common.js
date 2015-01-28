@@ -16,7 +16,7 @@ module.exports = {
   
   "CUSTOM_SETTINGS":          {
                                 "STATIC_URL":                   "/static/",
-                                "API_BASE_URL":                 "https://bikeindex.org/api/v1/",
+                                "API_BASE_URL":                 "https://bikeindex.org/api/v2/",
                                 "ACTIONS_UPDATE_CACHED_DATA":   true
                               }
 };
