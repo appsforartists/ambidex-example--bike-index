@@ -5,7 +5,7 @@ This is a sample application utilizing [**Ambidex**](https://github.com/appsfora
 ## Getting Started ##
 
 #### Clone the repository ####
-    git clone git@github.com:appsforartists/Ambidex.git
+    git clone git@github.com:appsforartists/ambidex-example--bike-index.git
 
 #### Install the dependencies ####
     npm install
