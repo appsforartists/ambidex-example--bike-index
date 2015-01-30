@@ -17,6 +17,8 @@ This is a sample application utilizing [**Ambidex**](https://github.com/appsfora
 #### Start the server ###
     npm start tardis
 
+_(If you're running an older version of npm, try `node --harmony ./init.js tardis`  It should do the same thing.)_
+
 #### Navigate to the appropriate page in your browser ####
  - http://tardis.local:8080/ or
  - http://bikeindex.local:8080/
