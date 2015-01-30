@@ -39,7 +39,7 @@ var StolenBikes = {
                                             },
 
                       "getStolenBikes":     function () {
-                                              return this.getFromAPI(`bikes/?stolen=true`).then(
+                                              return this.getFromAPI(`bikes_search/stolen`).then(
                                                 response => response.bikes.map(
                                                   bike => BikeModel.fromBikeIndex(
                                                     bike,

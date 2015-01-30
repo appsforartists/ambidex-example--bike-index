@@ -11,7 +11,6 @@ var StolenBikeCard = React.createClass(
 
     "render":                     function () {
                                     var model = this.props.model;
-
                                     return  <Card
                                               className     = "StolenBikeCard"
 
@@ -27,7 +26,7 @@ var StolenBikeCard = React.createClass(
                                                               }
 
                                               title         = { model.title }
-                                              subtitle      = { model.stolenRecord.location}
+                                              subtitle      = { model.stolenLocation }
                                             />;
                                   }
   }

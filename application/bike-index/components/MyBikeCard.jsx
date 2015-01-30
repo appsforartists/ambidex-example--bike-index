@@ -23,10 +23,10 @@ var MyBikeCard = React.createClass(
                                               image         = {
                                                                 <div className = "Photos">
                                                                   {
-                                                                    this.props.model.images.map(
+                                                                    this.props.model.publicImages.map(
                                                                       imageMetadata =>  <img
-                                                                                          key = { imageMetadata.image.medium.url }
-                                                                                          src = { imageMetadata.image.medium.url }
+                                                                                          key = { imageMetadata.medium }
+                                                                                          src = { imageMetadata.medium }
                                                                                         />
                                                                     )
                                                                   }

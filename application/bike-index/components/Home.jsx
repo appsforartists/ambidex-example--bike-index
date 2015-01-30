@@ -26,7 +26,7 @@ var Home = React.createClass(
                                               <div className = "StolenBikes">
                                                 {
                                                   this.state.stolenBikes.filter(
-                                                    bike => bike.photo
+                                                    bike => bike.thumb
                                                   ).map(
                                                     bike => <StolenBikeCard
                                                               model = { bike }

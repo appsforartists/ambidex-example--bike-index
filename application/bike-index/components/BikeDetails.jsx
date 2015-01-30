@@ -31,12 +31,12 @@ var BikeDetails = React.createClass(
                                     return  <div className = "BikeDetails">
                                               <ul className = "Photos">
                                                 {
-                                                  model.images.map(
+                                                  model.publicImages.map(
                                                     imageMetadata =>  <li
-                                                                        key = { imageMetadata.image.large.url }
+                                                                        key = { imageMetadata.large }
                                                                       >
                                                                         <img
-                                                                          src = { imageMetadata.image.large.url }
+                                                                          src = { imageMetadata.large }
                                                                         />
                                                                       </li>
                                                   )
