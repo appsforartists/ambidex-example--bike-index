@@ -4,7 +4,7 @@
   "description": "An Ambidex demonstration that displays the Bike Index",
   "main": "init.js",
   "dependencies": {
-    "Ambidex": "git+https://github.com/appsforartists/Ambidex",
+    "Ambidex": "0.1.0",
     "isomorphic-reflux": "0.2.1",
     "lazy.js": "0.4.0",
     "mach": "1.1.0",
