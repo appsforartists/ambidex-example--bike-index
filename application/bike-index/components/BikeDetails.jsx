@@ -1,87 +1,54 @@
-var React       = require("react/addons");
-var ReactRouter = require("react-router");
-var Ambidex     = require("ambidex");
+var React = require("react/addons");
+var Ambidex = require("ambidex");
 
-var BikeDetails = React.createClass(
-  {
-    "mixins":                     [
-                                    Ambidex.mixinCreators.connectStoresToLocalState(
-                                      "CurrentBike"
-                                    ),
-                                    Ambidex.mixins.Title,
-                                  ],
+var BikeDetails = React.createClass({
+  mixins: [
+    Ambidex.mixinCreators.connectStoresToLocalState("CurrentBike"),
+    Ambidex.mixins.Title
+  ],
 
+  getSectionTitle() {
+    var model = this.state.currentBike;
+    if (model) return model.name || model.title;
+  },
 
-    "getSectionTitle":            function () {
-                                    var model = this.state.currentBike;
+  render() {
+    var model = this.state.currentBike;
 
-                                    if (model)
-                                      return model.name || model.title;
-                                  },
+    if (!model) return <div className = "BikeDetails">Loading…</div>;
 
-    "render":                     function () {
-                                    var model = this.state.currentBike;
+    var photos = model.images.map(imageMetaData => (
+        <li key={imageMetaData.image.large.url}>
+          <img src={imageMetaData.image.large.url}/>
+        </li>)
+    );
 
-                                    if (!model) {
-                                      return  <div className = "BikeDetails">
-                                                Loading…
-                                              </div>
-                                    }
+    var tbody = model.components.filter(
+        component => component.manufacturerName && component.modelName
+    ).map((component, i) => (
+        <tr key={i}
+          <td>{ component.componentType }</td>
+          <td>${component.manufacturerName} ${component.modelName}</td>
+        </tr>
+      )
+    );
 
-                                    return  <div className = "BikeDetails">
-                                              <ul className = "Photos">
-                                                {
-                                                  model.images.map(
-                                                    imageMetadata =>  <li
-                                                                        key = { imageMetadata.image.large.url }
-                                                                      >
-                                                                        <img
-                                                                          src = { imageMetadata.image.large.url }
-                                                                        />
-                                                                      </li>
-                                                  )
-                                                }
-                                              </ul>
-
-                                              <div className = "Body">
-                                                <header>
-                                                  <h1>
-                                                    { model.name }
-                                                  </h1>
-
-                                                  <h2>
-                                                    { model.title }
-                                                  </h2>
-                                                </header>
-
-                                                <p className = "Description">
-                                                  { model.description }
-                                                </p>
-
-                                                <table className = "Components">
-                                                  <tbody>
-                                                    {
-                                                      model.components.filter(
-                                                        component => component.manufacturerName && component.modelName
-                                                      ).map(
-                                                        (component, i) =>   <tr
-                                                                              key = { i }
-                                                                            >
-                                                                              <td>
-                                                                                { component.componentType }
-                                                                              </td>
-                                                                              <td>
-                                                                                { `${ component.manufacturerName } ${ component.modelName }` }
-                                                                              </td>
-                                                                            </tr>
-                                                      )
-                                                    }
-                                                  </tbody>
-                                                </table>
-                                              </div>
-                                            </div>;
-                                  }
+    return (
+      <div className = "BikeDetails">
+        <ul className = "Photos">{photos}</ul>
+        <div className = "Body">
+          <header>
+            <h1>{model.name}</h1>
+            <h2>{model.title}</h2>
+          </header>
+          <p className = "Description">{model.description}</p>
+          <table className = "Components">
+            <tbody>{tbody}</tbody>
+          </table>
+        </div>
+      </div>
+    );
   }
-);
+});
 
 module.exports = BikeDetails;
