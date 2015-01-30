@@ -8,9 +8,9 @@ var Card = require("../../generic/components/Card.jsx");
 
 var StolenBikeCard = React.createClass(
   {
-
     "render":                     function () {
                                     var model = this.props.model;
+
                                     return  <Card
                                               className     = "StolenBikeCard"
 
@@ -26,7 +26,7 @@ var StolenBikeCard = React.createClass(
                                                               }
 
                                               title         = { model.title }
-                                              subtitle      = { model.stolenLocation }
+                                              subtitle      = { model.stolenLocation || " " }
                                             />;
                                   }
   }
