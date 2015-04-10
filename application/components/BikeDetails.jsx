@@ -382,6 +382,8 @@ var BikeDetails = React.createClass(
   }
 );
 
+var photoContainerHeight = 234;
+
 var styles = {
   "header":           {
                         "textAlign":                     "center",
@@ -398,6 +400,7 @@ var styles = {
   "photos":           autoprefixStyleProp(
                         {
                           "flexDirection":                  "row",
+                          "height":                         photoContainerHeight,
                           "width":                          "100vw",
                           "overflowX":                      "scroll",
                         }
@@ -412,7 +415,7 @@ var styles = {
 
   "photo":            {
                         "maxWidth":                       "99vw",
-                        "maxHeight":                      234,
+                        "maxHeight":                      photoContainerHeight,
 
                         "backgroundColor":                "white",
                       },
