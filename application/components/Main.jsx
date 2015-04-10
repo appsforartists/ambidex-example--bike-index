@@ -4,7 +4,7 @@ var Ambidex     = require("ambidex");
 var GenericMain = require("gravel").components.Main;
 var IconButton  = require("gravel").components.IconButton;
 
-var MyBikes = require("../../bike-index/components/MyBikes.jsx");
+var MyBikes = require("./MyBikes.jsx");
 
 var ghettoPutColorsOnContext = require("../mixinCreators/ghettoPutColorsOnContext");
 

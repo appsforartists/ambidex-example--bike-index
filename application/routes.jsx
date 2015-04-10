@@ -7,21 +7,21 @@ var Route  = ReactRouter.Route;
 
 module.exports =  <Route
                     path    = "/"
-                    handler = { require('./bike-index/components/Main.jsx') }
+                    handler = { require('./components/Main.jsx') }
                   >
                     <Route
                       path    = "/"
                       name    = "home"
-                      handler = { require('./bike-index/components/Home.jsx') }
+                      handler = { require('./components/Home.jsx') }
                     />
                     <Route
                       path    = "/bikes/:bikeID/"
                       name    = "viewBike"
-                      handler = { require('./bike-index/components/BikeDetails.jsx') }
+                      handler = { require('./components/BikeDetails.jsx') }
                     />
                     <Route
                       path    = "/bikes/:bikeID/edit/"
                       name    = "editBike"
-                      handler = { require('./bike-index/components/BikeDetails.jsx') }
+                      handler = { require('./components/BikeDetails.jsx') }
                     />
                   </Route>;
