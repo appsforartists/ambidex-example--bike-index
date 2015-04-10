@@ -1,13 +1,13 @@
-var Lazy = require("lazy.js");
+var utilities = require("ambidex").addons.utilities;
 
-var commonSettings = require("./settings.common.js");
-
-module.exports = Lazy(commonSettings).merge(
+module.exports = utilities.recursiveCloneWithDefaults(
   {
     "HOST":                           "bikeindex.local",
     "PORT":                           "8080",
 
     "ENABLE_HOT_MODULE_REPLACEMENT":  true,
     "WEBPACK_PORT":                   "8081"
-  }
-).toObject();
+  },
+
+  require("./settings.common.js")
+);
