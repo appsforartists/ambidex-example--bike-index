@@ -4,15 +4,29 @@ var Ambidex     = require("ambidex");
 
 var Link = ReactRouter.Link;
 
-var Card = require("../../generic/components/Card.jsx");
+var Card = require("gravel").components.Card;
+
+var GhettoColorMixin = require("../mixins/GhettoColor");
 
 var StolenBikeCard = React.createClass(
   {
+    "mixins":                     [
+                                    GhettoColorMixin,
+                                  ],
+
     "render":                     function () {
                                     var model = this.props.model;
+                                    var ghettoColors = this.getGhettoColors();
 
                                     return  <Card
-                                              className     = "StolenBikeCard"
+                                              style         = {
+                                                                {
+                                                                  "color":            ghettoColors.primary3,
+                                                                  "backgroundColor":  ghettoColors.accent1,
+
+                                                                  ...styles.container
+                                                                }
+                                                              }
 
                                               linkTo        = "viewBike"
                                               linkParams    = {
@@ -22,7 +36,15 @@ var StolenBikeCard = React.createClass(
                                                               }
 
                                               image         = {
-                                                                <img src = { model.thumb } />
+                                                                // protecting the image from flexbox so it
+                                                                // can calculate its own intrinsic size
+
+                                                                <div style = { styles.imageContainer }>
+                                                                  <img
+                                                                    style = { styles.image }
+                                                                    src   = { model.thumb }
+                                                                  />
+                                                                </div>
                                                               }
 
                                               title         = { model.title }
@@ -31,6 +53,21 @@ var StolenBikeCard = React.createClass(
                                   }
   }
 );
+
+var styles = {
+  "container":        {
+                        "width":  "100%",
+                      },
+
+  "imageContainer":   {
+                        "width":  "100%",
+                      },
+
+  "image":            {
+                        "width":  "100%",
+                        "height": "auto",
+                      },
+};
 
 module.exports = StolenBikeCard;
 

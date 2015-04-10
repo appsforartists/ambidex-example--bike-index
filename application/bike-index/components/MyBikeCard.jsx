@@ -4,14 +4,30 @@ var Ambidex     = require("ambidex");
 
 var Link = ReactRouter.Link;
 
-var Card = require("../../generic/components/Card.jsx");
+var Card = require("gravel").components.Card;
+var ButtonText = require("gravel").components.texts.ButtonText;
+
+var autoprefixStyleProp = require("autoprefix-style-prop");
+
+var GhettoColorMixin = require("../mixins/GhettoColor");
 
 var MyBikeCard = React.createClass(
   {
+    "mixins":                     [
+                                    GhettoColorMixin,
+                                  ],
 
     "render":                     function () {
+                                    var ghettoColors = this.getGhettoColors();
+
                                     return  <Card
-                                              className     = "MyBikeCard"
+                                              elevation     = { 2 }
+                                              style         = {
+                                                                {
+                                                                  "margin":           8,
+                                                                  "backgroundColor":  ghettoColors.accent2,
+                                                                }
+                                                              }
 
                                               linkTo        = "viewBike"
                                               linkParams    = {
@@ -21,12 +37,13 @@ var MyBikeCard = React.createClass(
                                                               }
 
                                               image         = {
-                                                                <div className = "Photos">
+                                                                <div style = { styles.photos }>
                                                                   {
                                                                     this.props.model.publicImages.map(
                                                                       imageMetadata =>  <img
-                                                                                          key = { imageMetadata.medium }
-                                                                                          src = { imageMetadata.medium }
+                                                                                          style = { styles.photo }
+                                                                                          key   = { imageMetadata.medium }
+                                                                                          src   = { imageMetadata.medium }
                                                                                         />
                                                                     )
                                                                   }
@@ -36,22 +53,55 @@ var MyBikeCard = React.createClass(
                                               title         = { this.props.model.name }
 
                                               actionButtons = {
-                                                                <Link
-                                                                  className = "Edit Button"
-                                                                  to        = "editBike"
-                                                                  params    = {
-                                                                                {
-                                                                                  "bikeID":   this.props.model.id
+                                                                <div style = { styles.actionButtons } >
+                                                                  <Link
+                                                                    to        = "editBike"
+                                                                    params    = {
+                                                                                  {
+                                                                                    "bikeID":   this.props.model.id
+                                                                                  }
                                                                                 }
-                                                                              }
-                                                                >
-                                                                  Edit
-                                                                </Link>
+
+                                                                    style     = {
+                                                                                  {
+                                                                                    "color":  ghettoColors.primary1
+                                                                                  }
+                                                                                }
+                                                                  >
+                                                                    <ButtonText>
+                                                                      Edit
+                                                                    </ButtonText>
+                                                                  </Link>
+                                                                </div>
                                                               }
                                             />;
                                   }
   }
 );
+
+var styles = {
+  "photos":         autoprefixStyleProp(
+                      {
+                        "flexDirection":                "row",
+                        "overflowX":                    "scroll",
+                        "backgroundColor":              "white",
+                      }
+                    ),
+
+  "photo":          autoprefixStyleProp(
+                      {
+                        "flex":                         "none",
+                        "height":                       174,
+                      }
+                    ),
+
+  "actionButtons":  autoprefixStyleProp(
+                      {
+                        "flexDirection":                "row",
+                        "justifyContent":               "flex-end",
+                      }
+                    ),
+};
 
 module.exports = MyBikeCard;
 
