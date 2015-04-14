@@ -42,6 +42,7 @@ BikeModel.fromBikeIndex = function (
 ) {
   var result = camelizeKeys(bikeIndexModel);
   result.detailLevel = detailLevel;
+  result.id = String(result.id);
 
   return result;
 };
