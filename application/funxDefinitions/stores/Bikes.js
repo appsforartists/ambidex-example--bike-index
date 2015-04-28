@@ -40,7 +40,7 @@ var Bikes = {
                         "bikesLoaded":  function ({ bikes }, lastValue) {
                                           return lastValue.merge(
                                             bikes.mapEntries(
-                                              ([i, bike], _) => [bike.id, bike]
+                                              ([i, bike]) => [bike.id, bike]
                                             )
                                           );
                                         },

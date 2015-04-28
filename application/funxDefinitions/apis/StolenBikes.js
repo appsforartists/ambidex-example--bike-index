@@ -19,14 +19,14 @@ var StolenBikes = Object.assign(
                                 response.bikes
 
                               ).toMap().mapEntries(
-                                ([i, bike], _) => [
-                                                    String(bike.id),
+                                ([i, bike]) =>  [
+                                                  String(bike.id),
 
-                                                    BikeModel.fromBikeIndex(
-                                                      bike,
-                                                      BikeModel.DetailLevel.SUMMARY
-                                                    )
-                                                  ]
+                                                  BikeModel.fromBikeIndex(
+                                                    bike,
+                                                    BikeModel.DetailLevel.SUMMARY
+                                                  )
+                                                ]
                               );
 
                               this.funx.actions.bikesLoaded(

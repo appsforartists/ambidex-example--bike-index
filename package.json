@@ -4,7 +4,7 @@
   "description": "An Ambidex demonstration that displays the Bike Index",
   "main": "init.js",
   "dependencies": {
-    "ambidex": "0.2.0-beta4",
+    "ambidex": "0.2.0-beta5",
     "autoprefix-style-prop": "~1.0.1",
     "funx": "0.0.0",
     "gravel": "0.0.2",

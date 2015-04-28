@@ -19,14 +19,12 @@ var Bikes = Object.assign(
                                 BikeModel.DetailLevel.FULL
                               );
 
-                              // ugly syntax until https://github.com/facebook/jstransform/issues/35 closes
-                              var bikes = {};
-                              bikes[bike.id] = bike;
-
                               this.funx.actions.bikesLoaded(
                                 {
                                   "bikes":  Immutable.Map(
-                                              bikes
+                                              {
+                                                [bike.id]:  bike
+                                              }
                                             )
                                 }
                               );
